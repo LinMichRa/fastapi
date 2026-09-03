@@ -7,3 +7,4 @@ app = FastAPI(title="Servicio de cédula")
 def obtener_cedula():
     numero = random.randint(1000000000, 9999999999)
     return {"cedula": numero}
+
