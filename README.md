@@ -1,3 +1,16 @@
+# Despliegue continuo en Render
+
+El proyecto se puede desplegar como un Web Service gratuito en Render usando el `Dockerfile` incluido.
+
+1. Sube este proyecto a GitHub en la rama `main`.
+2. En [Render](https://render.com/), crea un **Web Service** y conecta el repositorio de GitHub.
+3. Selecciona **Docker** como entorno de ejecucion. Render construira el servicio desde el `Dockerfile` y detectara el puerto `8000` expuesto por la aplicacion.
+4. Cuando el servicio haya sido creado, abre **Settings** y copia la URL de **Deploy Hook**.
+5. En GitHub, abre **Settings > Secrets and variables > Actions**, crea un secreto nuevo llamado `RENDER_DEPLOY_HOOK` y pega esa URL como valor.
+6. Haz push a `main`. El flujo `.github/workflows/deploy-render.yml` se ejecutara y solicitara un nuevo despliegue a Render.
+
+El plan gratuito de Render puede suspender servicios inactivos; la primera solicitud despues de la suspension puede tardar unos segundos.
+
 # Servicio FastAPI de Cédula
 
 Este proyecto expone un endpoint para generar un número aleatorio de 10 dígitos.
